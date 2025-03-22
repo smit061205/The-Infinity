@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources - FarmConnect</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="user_dashboard.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <img src="logo.png" alt="Logo" class="logo" />
+          <h2>FarmConnect</h2>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="user_dashboard.html"
+                ><i class="fas fa-home"></i> Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="loans.html"
+                ><i class="fas fa-hand-holding-usd"></i> Loans</a
+              >
+            </li>
+            <li>
+              <a href="weather.html"
+                ><i class="fas fa-cloud-sun"></i> Weather</a
+              >
+            </li>
+            <li>
+              <a href="market.html"
+                ><i class="fas fa-shopping-cart"></i> Market</a
+              >
+            </li>
+            <li class="active">
+              <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+            </li>
+            <li>
+              <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            </li>
+            <li>
+              <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="landing_page.html"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Top Navigation -->
+        <header class="top-nav">
+          <button id="sidebar-toggle" class="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <div class="search-bar">
+            <input
+              type="text"
+              placeholder="Search resources..."
+              class="search-input"
+            />
+            <button class="search-button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+
+          <div class="nav-right">
+            <div class="theme-toggle">
+              <button id="theme-toggle-btn" class="icon-button">
+                <i class="fas fa-moon"></i>
+              </button>
+            </div>
+            <div class="notifications">
+              <button class="icon-button">
+                <i class="fas fa-bell"></i>
+                <span class="badge">3</span>
+              </button>
+            </div>
+            <div class="messages">
+              <button class="icon-button">
+                <i class="fas fa-envelope"></i>
+                <span class="badge">5</span>
+              </button>
+            </div>
+            <div class="user-menu">
+              <div class="user-profile">
+                <img src="photo1.jpg" alt="User" class="avatar" />
+                <div class="user-info">
+                  <h4>John Smith</h4>
+                  <p>Farmer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <div class="page-header">
+            <h1><i class="fas fa-book"></i> Resources</h1>
+            <p>Access educational materials, guides, and farming resources</p>
+          </div>
+
+          <div class="resources-container">
+            <!-- Featured Resources -->
+            <div class="featured-resources">
+              <h2>Featured Resources</h2>
+              <div class="featured-grid">
+                <div class="featured-item">
+                  <div class="featured-image">
+                    <img
+                      src="https://via.placeholder.com/600x300"
+                      alt="Sustainable Farming"
+                    />
+                    <div class="featured-badge new">New</div>
+                  </div>
+                  <div class="featured-content">
+                    <h3>Sustainable Farming Practices Guide</h3>
+                    <p>
+                      Learn about the latest sustainable farming techniques to
+                      improve soil health and crop yields while reducing
+                      environmental impact.
+                    </p>
+                    <div class="featured-meta">
+                      <div class="meta-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>March 15, 2023</span>
+                      </div>
+                      <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>20 min read</span>
+                      </div>
+                    </div>
+                    <button class="btn-primary">Read Now</button>
+                  </div>
+                </div>
+
+                <div class="featured-item video">
+                  <div class="featured-image">
+                    <img
+                      src="https://via.placeholder.com/600x300"
+                      alt="Farm Equipment Maintenance"
+                    />
+                    <div class="play-button">
+                      <i class="fas fa-play"></i>
+                    </div>
+                  </div>
+                  <div class="featured-content">
+                    <div class="featured-tag">
+                      <i class="fas fa-video"></i>
+                      <span>Video Series</span>
+                    </div>
+                    <h3>Farm Equipment Maintenance Masterclass</h3>
+                    <p>
+                      Expert technicians demonstrate essential maintenance
+                      procedures for common farm equipment to extend their
+                      lifespan and prevent costly repairs.
+                    </p>
+                    <div class="featured-meta">
+                      <div class="meta-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>February 28, 2023</span>
+                      </div>
+                      <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>5 videos (45 min)</span>
+                      </div>
+                    </div>
+                    <button class="btn-primary">Watch Series</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resource Categories -->
+            <div class="resource-categories">
+              <h2>Browse by Category</h2>
+              <div class="categories-grid">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="fas fa-seedling"></i>
+                  </div>
+                  <h3>Crop Management</h3>
+                  <p>
+                    Guides on planting, growing, and harvesting various crops
+                  </p>
+                  <a href="#" class="category-link"
+                    >32 resources <i class="fas fa-chevron-right"></i
+                  ></a>
+                </div>
+
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="fas fa-tractor"></i>
+                  </div>
+                  <h3>Equipment & Technology</h3>
+                  <p>
+                    Information on farm machinery, tools, and agricultural
+                    technology
+                  </p>
+                  <a href="#" class="category-link"
+                    >47 resources <i class="fas fa-chevron-right"></i
+                  ></a>
+                </div>
+
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <h3>Farm Business</h3>
+                  <p>
+                    Business management, marketing, and financial planning
+                    resources
+                  </p>
+                  <a href="#" class="category-link"
+                    >25 resources <i class="fas fa-chevron-right"></i
+                  ></a>
+                </div>
+
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="fas fa-leaf"></i>
+                  </div>
+                  <h3>Sustainable Practices</h3>
+                  <p>
+                    Resources on organic farming, conservation, and
+                    environmental stewardship
+                  </p>
+                  <a href="#" class="category-link"
+                    >38 resources <i class="fas fa-chevron-right"></i
+                  ></a>
+                </div>
+
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                  </div>
+                  <h3>Grants & Programs</h3>
+                  <p>
+                    Information on available agricultural grants, subsidies, and
+                    programs
+                  </p>
+                  <a href="#" class="category-link"
+                    >19 resources <i class="fas fa-chevron-right"></i
+                  ></a>
+                </div>
+
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <h3>Education & Training</h3>
+                  <p>
+                    Courses, workshops, and educational opportunities for
+                    farmers
+                  </p>
+                  <a href="#" class="category-link"
+                    >28 resources <i class="fas fa-chevron-right"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Resources -->
+            <div class="recent-resources">
+              <div class="section-header">
+                <h2>Recent Resources</h2>
+                <a href="#" class="view-all"
+                  >View All <i class="fas fa-chevron-right"></i
+                ></a>
+              </div>
+
+              <div class="resources-grid">
+                <div class="resource-card">
+                  <div class="resource-img">
+                    <img
+                      src="https://via.placeholder.com/300x200"
+                      alt="Irrigation Systems"
+                    />
+                  </div>
+                  <div class="resource-content">
+                    <div class="resource-type article">
+                      <i class="fas fa-file-alt"></i>
+                      <span>Article</span>
+                    </div>
+                    <h3>Modern Irrigation Systems: A Comparison Guide</h3>
+                    <p>
+                      Compare different irrigation systems to find the best
+                      option for your farm's specific needs and water
+                      conservation goals.
+                    </p>
+                    <div class="resource-meta">
+                      <span class="date">March 18, 2023</span>
+                      <span class="read-time">15 min read</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="resource-card">
+                  <div class="resource-img">
+                    <img
+                      src="https://via.placeholder.com/300x200"
+                      alt="Pest Management"
+                    />
+                  </div>
+                  <div class="resource-content">
+                    <div class="resource-type video">
+                      <i class="fas fa-video"></i>
+                      <span>Video</span>
+                    </div>
+                    <h3>Integrated Pest Management Techniques</h3>
+                    <p>
+                      Learn effective strategies to control pests while
+                      minimizing chemical use and environmental impact on your
+                      farm.
+                    </p>
+                    <div class="resource-meta">
+                      <span class="date">March 14, 2023</span>
+                      <span class="duration">18 minutes</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="resource-card">
+                  <div class="resource-img">
+                    <img
+                      src="https://via.placeholder.com/300x200"
+                      alt="Soil Testing"
+                    />
+                  </div>
+                  <div class="resource-content">
+                    <div class="resource-type guide">
+                      <i class="fas fa-book"></i>
+                      <span>Guide</span>
+                    </div>
+                    <h3>Complete Guide to Soil Testing and Analysis</h3>
+                    <p>
+                      Step-by-step instructions for testing your soil and
+                      interpreting the results to improve soil health and crop
+                      productivity.
+                    </p>
+                    <div class="resource-meta">
+                      <span class="date">March 10, 2023</span>
+                      <span class="pages">24 pages</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="resource-card">
+                  <div class="resource-img">
+                    <img
+                      src="https://via.placeholder.com/300x200"
+                      alt="Farm Accounting"
+                    />
+                  </div>
+                  <div class="resource-content">
+                    <div class="resource-type template">
+                      <i class="fas fa-file-excel"></i>
+                      <span>Template</span>
+                    </div>
+                    <h3>Farm Accounting and Record-Keeping Templates</h3>
+                    <p>
+                      Download customizable templates to help track income,
+                      expenses, inventory, and other important farm business
+                      records.
+                    </p>
+                    <div class="resource-meta">
+                      <span class="date">March 5, 2023</span>
+                      <span class="files">6 files</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="resource-card">
+                  <div class="resource-img">
+                    <img
+                      src="https://via.placeholder.com/300x200"
+                      alt="Crop Rotation"
+                    />
+                  </div>
+                  <div class="resource-content">
+                    <div class="resource-type webinar">
+                      <i class="fas fa-laptop"></i>
+                      <span>Webinar</span>
+                    </div>
+                    <h3>Effective Crop Rotation Strategies</h3>
+                    <p>
+                      Expert farmers share their successful crop rotation plans
+                      to improve soil health, reduce pest pressure, and increase
+                      yields.
+                    </p>
+                    <div class="resource-meta">
+                      <span class="date">March 2, 2023</span>
+                      <span class="duration">55 minutes</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="resource-card">
+                  <div class="resource-img">
+                    <img
+                      src="https://via.placeholder.com/300x200"
+                      alt="Farm Insurance"
+                    />
+                  </div>
+                  <div class="resource-content">
+                    <div class="resource-type article">
+                      <i class="fas fa-file-alt"></i>
+                      <span>Article</span>
+                    </div>
+                    <h3>Understanding Farm Insurance Options</h3>
+                    <p>
+                      Learn about different types of agricultural insurance
+                      policies to protect your farm business from various risks
+                      and disasters.
+                    </p>
+                    <div class="resource-meta">
+                      <span class="date">February 25, 2023</span>
+                      <span class="read-time">12 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upcoming Webinars -->
+            <div class="upcoming-webinars">
+              <h2>Upcoming Webinars</h2>
+              <div class="webinars-list">
+                <div class="webinar-item">
+                  <div class="webinar-date">
+                    <div class="date-month">APR</div>
+                    <div class="date-day">05</div>
+                  </div>
+                  <div class="webinar-details">
+                    <h3>
+                      Maximizing Profits with Direct Farm-to-Consumer Marketing
+                    </h3>
+                    <p>
+                      Learn strategies to build a direct-to-consumer sales
+                      channel for your farm products to increase profit margins.
+                    </p>
+                    <div class="webinar-meta">
+                      <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>2:00 PM - 3:30 PM EST</span>
+                      </div>
+                      <div class="meta-item">
+                        <i class="fas fa-user"></i>
+                        <span
+                          >Presenter: Sarah Johnson, Marketing Specialist</span
+                        >
+                      </div>
+                    </div>
+                    <div class="webinar-actions">
+                      <button class="btn-primary">Register Now</button>
+                      <button class="btn-outline">Add to Calendar</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="webinar-item">
+                  <div class="webinar-date">
+                    <div class="date-month">APR</div>
+                    <div class="date-day">12</div>
+                  </div>
+                  <div class="webinar-details">
+                    <h3>
+                      Climate-Smart Farming: Adapting to Changing Weather
+                      Patterns
+                    </h3>
+                    <p>
+                      Discover practical techniques to adapt your farming
+                      operations to increasingly unpredictable weather
+                      conditions.
+                    </p>
+                    <div class="webinar-meta">
+                      <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>1:00 PM - 2:30 PM EST</span>
+                      </div>
+                      <div class="meta-item">
+                        <i class="fas fa-user"></i>
+                        <span
+                          >Presenter: Dr. Michael Rodriguez, Climate
+                          Scientist</span
+                        >
+                      </div>
+                    </div>
+                    <div class="webinar-actions">
+                      <button class="btn-primary">Register Now</button>
+                      <button class="btn-outline">Add to Calendar</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="webinar-item">
+                  <div class="webinar-date">
+                    <div class="date-month">APR</div>
+                    <div class="date-day">20</div>
+                  </div>
+                  <div class="webinar-details">
+                    <h3>
+                      Farm Succession Planning: Preparing for the Next
+                      Generation
+                    </h3>
+                    <p>
+                      Important considerations and legal frameworks for smoothly
+                      transitioning your farm to the next generation.
+                    </p>
+                    <div class="webinar-meta">
+                      <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>3:00 PM - 4:30 PM EST</span>
+                      </div>
+                      <div class="meta-item">
+                        <i class="fas fa-user"></i>
+                        <span
+                          >Presenter: James Wilson, Agricultural Attorney</span
+                        >
+                      </div>
+                    </div>
+                    <div class="webinar-actions">
+                      <button class="btn-primary">Register Now</button>
+                      <button class="btn-outline">Add to Calendar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="webinars-footer">
+                <a href="#" class="view-all-webinars"
+                  >View All Upcoming Webinars
+                  <i class="fas fa-chevron-right"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Resource Library -->
+            <div class="resource-library">
+              <div class="section-header">
+                <h2>Resource Library</h2>
+                <div class="library-search">
+                  <input
+                    type="text"
+                    placeholder="Search the library..."
+                    class="library-search-input"
+                  />
+                  <button class="library-search-button">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="library-filters">
+                <div class="filter-group">
+                  <label>Content Type</label>
+                  <div class="filter-options">
+                    <div class="filter-option">
+                      <input type="checkbox" id="filter-articles" checked />
+                      <label for="filter-articles">Articles</label>
+                    </div>
+                    <div class="filter-option">
+                      <input type="checkbox" id="filter-videos" checked />
+                      <label for="filter-videos">Videos</label>
+                    </div>
+                    <div class="filter-option">
+                      <input type="checkbox" id="filter-guides" checked />
+                      <label for="filter-guides">Guides</label>
+                    </div>
+                    <div class="filter-option">
+                      <input type="checkbox" id="filter-templates" checked />
+                      <label for="filter-templates">Templates</label>
+                    </div>
+                    <div class="filter-option">
+                      <input type="checkbox" id="filter-webinars" checked />
+                      <label for="filter-webinars">Webinars</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <label>Topic</label>
+                  <select class="filter-select">
+                    <option value="">All Topics</option>
+                    <option value="crop">Crop Production</option>
+                    <option value="livestock">Livestock</option>
+                    <option value="equipment">Equipment</option>
+                    <option value="business">Farm Business</option>
+                    <option value="sustainable">Sustainable Practices</option>
+                    <option value="technology">Agricultural Technology</option>
+                  </select>
+                </div>
+
+                <div class="filter-group">
+                  <label>Date</label>
+                  <select class="filter-select">
+                    <option value="">Any Time</option>
+                    <option value="week">Last Week</option>
+                    <option value="month">Last Month</option>
+                    <option value="3month">Last 3 Months</option>
+                    <option value="year">Last Year</option>
+                  </select>
+                </div>
+
+                <button class="filter-reset">
+                  <i class="fas fa-redo-alt"></i>
+                  <span>Reset Filters</span>
+                </button>
+              </div>
+
+              <div class="library-results">
+                <p class="results-count">Showing 128 resources</p>
+
+                <div class="library-grid">
+                  <!-- Sample resource items - would be dynamically generated -->
+                  <div class="library-item">
+                    <div class="item-icon article">
+                      <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="item-content">
+                      <h4>Understanding Soil pH and Amendments</h4>
+                      <span class="item-date">March 12, 2023</span>
+                    </div>
+                    <button class="item-action">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </div>
+
+                  <div class="library-item">
+                    <div class="item-icon video">
+                      <i class="fas fa-video"></i>
+                    </div>
+                    <div class="item-content">
+                      <h4>Tractor Maintenance 101</h4>
+                      <span class="item-date">March 8, 2023</span>
+                    </div>
+                    <button class="item-action">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </div>
+
+                  <div class="library-item">
+                    <div class="item-icon guide">
+                      <i class="fas fa-book"></i>
+                    </div>
+                    <div class="item-content">
+                      <h4>Complete Guide to Organic Certification</h4>
+                      <span class="item-date">March 5, 2023</span>
+                    </div>
+                    <button class="item-action">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </div>
+
+                  <div class="library-item">
+                    <div class="item-icon template">
+                      <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="item-content">
+                      <h4>Farm Budget Template 2023</h4>
+                      <span class="item-date">February 28, 2023</span>
+                    </div>
+                    <button class="item-action">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </div>
+
+                  <div class="library-item">
+                    <div class="item-icon webinar">
+                      <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="item-content">
+                      <h4>Tax Planning for Farmers</h4>
+                      <span class="item-date">February 22, 2023</span>
+                    </div>
+                    <button class="item-action">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </div>
+
+                  <div class="library-item">
+                    <div class="item-icon article">
+                      <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="item-content">
+                      <h4>Cover Crops: Benefits and Implementation</h4>
+                      <span class="item-date">February 15, 2023</span>
+                    </div>
+                    <button class="item-action">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="pagination">
+                  <button class="page-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="page-btn active">1</button>
+                  <button class="page-btn">2</button>
+                  <button class="page-btn">3</button>
+                  <span class="page-ellipsis">...</span>
+                  <button class="page-btn">22</button>
+                  <button class="page-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="user_dashboard.js"></script>
+    <script src="resources.js"></script>
+  </body>
+</html>

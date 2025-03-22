@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Dashboard - FarmFinances</title>
+    <link rel="stylesheet" href="user_dashboard.css" />
+    <link rel="stylesheet" href="components.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <!-- Authentication Check Script -->
+    <script>
+      // Check if user is logged in
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        // Redirect to login page
+        window.location.href = "login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Mobile Sidebar Toggle -->
+    <button id="sidebar-toggle" class="mobile-only">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <img src="logo.png" alt="FarmFinances Logo" width="40" />
+            <span>FarmFinances</span>
+          </div>
+          <button class="mobile-toggle" id="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <ul>
+            <li id="nav-dashboard" class="active">
+              <a href="#dashboard"><i class="fas fa-home"></i>Dashboard</a>
+            </li>
+            <li id="nav-credit-score">
+              <a href="#credit-score"
+                ><i class="fas fa-chart-line"></i>Credit Score</a
+              >
+            </li>
+            <li id="nav-farm-data">
+              <a href="#farm-data"><i class="fas fa-tractor"></i>Farm Data</a>
+            </li>
+            <li id="nav-crop-schedule">
+              <a href="#crop-schedule"
+                ><i class="fas fa-calendar-alt"></i>Crop Schedule</a
+              >
+            </li>
+            <li id="nav-weather">
+              <a href="#weather"><i class="fas fa-cloud-sun"></i>Weather</a>
+            </li>
+            <li id="nav-loan-offers">
+              <a href="#loan-offers"
+                ><i class="fas fa-rupee-sign"></i>Loan Offers</a
+              >
+            </li>
+            <li id="nav-settings">
+              <a href="#settings"><i class="fas fa-cog"></i>Settings</a>
+            </li>
+            <li id="nav-logout">
+              <a href="#logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+          <!-- Remove the duplicate logout button -->
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Top Navigation -->
+        <header class="top-nav">
+          <div class="search-container">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search for anything..."
+                aria-label="Search"
+              />
+            </div>
+            <div class="search-results">
+              <div class="search-result-item">
+                <div class="result-title">Dashboard</div>
+                <div class="result-path">Home > Dashboard</div>
+              </div>
+              <div class="search-result-item">
+                <div class="result-title">Credit Score</div>
+                <div class="result-path">Home > Credit Score</div>
+              </div>
+              <div class="search-result-item">
+                <div class="result-title">Farm Data</div>
+                <div class="result-path">Home > Farm Data</div>
+              </div>
+              <div class="search-result-item">
+                <div class="result-title">Crop Schedule</div>
+                <div class="result-path">Home > Crop Schedule</div>
+              </div>
+              <div class="search-result-item">
+                <div class="result-title">Weather Forecast</div>
+                <div class="result-path">Home > Weather</div>
+              </div>
+              <div class="search-result-item">
+                <div class="result-title">Loan Offers</div>
+                <div class="result-path">Home > Loan Offers</div>
+              </div>
+            </div>
+          </div>
+          <div class="user-menu">
+            <div class="theme-toggle">
+              <button
+                id="theme-toggle"
+                class="icon-button"
+                aria-label="Toggle Theme"
+              >
+                <i class="fas fa-moon"></i>
+              </button>
+            </div>
+            <div class="notifications">
+              <button class="icon-button" aria-label="Notifications">
+                <i class="fas fa-bell"></i>
+                <span class="badge">3</span>
+              </button>
+            </div>
+            <div class="messages">
+              <button class="icon-button" aria-label="Messages">
+                <i class="fas fa-envelope"></i>
+                <span class="badge">5</span>
+              </button>
+            </div>
+            <div class="user-profile">
+              <div class="user-avatar">
+                <img src="" alt="User Avatar" />
+              </div>
+              <div class="user-info">
+                <h4 class="user-name">Loading...</h4>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard-section">
+          <div class="page-header">
+            <h1>Dashboard</h1>
+            <p>Welcome back, Jenish! Here's an overview of your farm.</p>
+          </div>
+
+          <!-- Dashboard Overview Cards -->
+          <div class="dashboard-cards">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-icon green">
+                  <i class="fas fa-leaf"></i>
+                </div>
+                <div class="card-title">
+                  <h3>Crop Yield</h3>
+                </div>
+              </div>
+              <div class="card-content">
+                <span class="highlight">14.5 tons</span>
+                <p>Per hectare average</p>
+              </div>
+              <div class="card-footer">
+                <div class="trend up">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>12% vs last season</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-icon blue">
+                  <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="card-title">
+                  <h3>Revenue</h3>
+                </div>
+              </div>
+              <div class="card-content">
+                <span class="highlight">₹32,450</span>
+                <p>This month</p>
+              </div>
+              <div class="card-footer">
+                <div class="trend up">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>8% vs last month</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-icon orange">
+                  <i class="fas fa-sun"></i>
+                </div>
+                <div class="card-title">
+                  <h3>Weather</h3>
+                </div>
+              </div>
+              <div class="card-content">
+                <span class="highlight">28°C</span>
+                <p>Partly cloudy</p>
+              </div>
+              <div class="card-footer">
+                <div class="trend">
+                  <i class="fas fa-info-circle"></i>
+                  <span>Ideal for crops</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-icon red">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="card-title">
+                  <h3>Credit Score</h3>
+                </div>
+              </div>
+              <div class="card-content">
+                <span class="highlight">725</span>
+                <p>Good Standing</p>
+              </div>
+              <div class="card-footer">
+                <div class="trend up">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>15 pts since last update</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Transactions -->
+          <div class="dashboard-section">
+            <div class="section-header">
+              <h2>Recent Transactions</h2>
+              <a href="#" class="btn-link"
+                >View All <i class="fas fa-chevron-right"></i
+              ></a>
+            </div>
+            <div class="transactions-list">
+              <div class="transaction-item">
+                <div class="transaction-icon expense">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Farm Supplies</div>
+                  <div class="transaction-date">Today, 2:35 PM</div>
+                </div>
+                <div class="transaction-amount expense">-₹12,565</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon income">
+                  <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Crop Sale</div>
+                  <div class="transaction-date">Yesterday, 9:20 AM</div>
+                </div>
+                <div class="transaction-amount income">+₹27,500</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon expense">
+                  <i class="fas fa-tractor"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Equipment Repair</div>
+                  <div class="transaction-date">Yesterday, 7:45 PM</div>
+                </div>
+                <div class="transaction-amount expense">-₹8,450</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Credit Score Section with new design -->
+        <section id="credit-score" class="dashboard-section">
+          <div class="page-header">
+            <h1>Credit Score</h1>
+            <p>
+              Monitor and improve your credit score to unlock better loan
+              opportunities.
+            </p>
+          </div>
+
+          <div class="credit-score-section">
+            <div class="section-header">
+              <h2>Credit Score Analysis</h2>
+              <a href="#" class="btn-link"
+                >View history <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+
+            <div class="credit-score-container">
+              <!-- Main Score Card -->
+              <div class="score-card">
+                <div class="score-header">
+                  <h3>Your Credit Score</h3>
+                  <p>Last updated on July 15, 2023</p>
+                </div>
+                <div class="score-body">
+                  <div class="score-value-container">
+                    <div class="score-value-large">725</div>
+                    <div class="score-category">Good</div>
+                  </div>
+
+                  <div class="score-info">
+                    <div class="score-info-item">
+                      <h4>Range</h4>
+                      <p>300-850</p>
+                    </div>
+                    <div class="score-info-item">
+                      <h4>Change</h4>
+                      <p>+15 pts</p>
+                    </div>
+                  </div>
+
+                  <div class="score-actions">
+                    <button class="score-action-btn">
+                      <i class="fas fa-chart-line"></i> Improve Score
+                    </button>
+                    <button class="score-action-btn secondary">
+                      <i class="fas fa-download"></i> Download Report
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Score Details Cards -->
+              <div class="score-details">
+                <!-- Payment History Card -->
+                <div class="detail-card">
+                  <div class="detail-header">
+                    <div class="detail-icon">
+                      <i class="fas fa-history"></i>
+                    </div>
+                    <div class="detail-title">
+                      <h4>Payment History</h4>
+                      <p>35% of your score</p>
+                    </div>
+                  </div>
+                  <div class="detail-content">
+                    <div class="detail-item">
+                      <span class="detail-label">On-time Payments</span>
+                      <span class="detail-value positive">98%</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Late Payments</span>
+                      <span class="detail-value">1</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Missed Payments</span>
+                      <span class="detail-value">0</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Credit Utilization Card -->
+                <div class="detail-card">
+                  <div class="detail-header">
+                    <div class="detail-icon">
+                      <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="detail-title">
+                      <h4>Credit Utilization</h4>
+                      <p>30% of your score</p>
+                    </div>
+                  </div>
+                  <div class="detail-content">
+                    <div class="detail-item">
+                      <span class="detail-label">Current Utilization</span>
+                      <span class="detail-value positive">22%</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Total Credit Limit</span>
+                      <span class="detail-value">₹2,50,000</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Used Credit</span>
+                      <span class="detail-value">₹55,000</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Credit Age Card -->
+                <div class="detail-card">
+                  <div class="detail-header">
+                    <div class="detail-icon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="detail-title">
+                      <h4>Credit Age</h4>
+                      <p>15% of your score</p>
+                    </div>
+                  </div>
+                  <div class="detail-content">
+                    <div class="detail-item">
+                      <span class="detail-label">Average Age</span>
+                      <span class="detail-value">3 years, 4 months</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Oldest Account</span>
+                      <span class="detail-value">5 years, 7 months</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Newest Account</span>
+                      <span class="detail-value">8 months</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Credit Mix Card -->
+                <div class="detail-card">
+                  <div class="detail-header">
+                    <div class="detail-icon">
+                      <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="detail-title">
+                      <h4>Credit Mix</h4>
+                      <p>10% of your score</p>
+                    </div>
+                  </div>
+                  <div class="detail-content">
+                    <div class="detail-item">
+                      <span class="detail-label">Loan Types</span>
+                      <span class="detail-value positive">Good Mix</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Open Accounts</span>
+                      <span class="detail-value">3</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Closed Accounts</span>
+                      <span class="detail-value">1</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tips for Improvement -->
+            <div class="section-header" style="margin-top: 2.5rem">
+              <h2>Tips for Improvement</h2>
+            </div>
+
+            <div class="score-details">
+              <div class="detail-card">
+                <div class="detail-header">
+                  <div class="detail-icon">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <div class="detail-title">
+                    <h4>Pay Bills on Time</h4>
+                    <p>High impact on score</p>
+                  </div>
+                </div>
+                <div class="detail-content">
+                  <p>
+                    Setting up automatic payments or payment reminders can help
+                    ensure you make your payments on time.
+                  </p>
+                </div>
+              </div>
+
+              <div class="detail-card">
+                <div class="detail-header">
+                  <div class="detail-icon">
+                    <i class="fas fa-credit-card"></i>
+                  </div>
+                  <div class="detail-title">
+                    <h4>Keep Credit Utilization Low</h4>
+                    <p>High impact on score</p>
+                  </div>
+                </div>
+                <div class="detail-content">
+                  <p>
+                    Try to keep your credit utilization below 30% of your
+                    available credit limit to maintain a good score.
+                  </p>
+                </div>
+              </div>
+
+              <div class="detail-card">
+                <div class="detail-header">
+                  <div class="detail-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                  </div>
+                  <div class="detail-title">
+                    <h4>Diversify Credit Mix</h4>
+                    <p>Medium impact on score</p>
+                  </div>
+                </div>
+                <div class="detail-content">
+                  <p>
+                    Having a mix of credit types shows you can manage different
+                    types of credit responsibly.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Farm Data Section -->
+        <section id="farm-data" class="dashboard-section">
+          <div class="page-header">
+            <h1>Farm Data</h1>
+            <p>Review your farm's performance metrics and analytics.</p>
+          </div>
+
+          <div class="dashboard-cards">
+            <div class="card">
+              <div class="card-icon green">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="card-content">
+                <h3>Current Crops</h3>
+                <p class="highlight">4</p>
+                <p class="trend">Wheat, Rice, Cotton, Sugarcane</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-icon blue">
+                <i class="fas fa-water"></i>
+              </div>
+              <div class="card-content">
+                <h3>Irrigation Status</h3>
+                <p class="highlight">Good</p>
+                <p class="trend">Water levels stable</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-icon orange">
+                <i class="fas fa-thermometer-half"></i>
+              </div>
+              <div class="card-content">
+                <h3>Soil Health</h3>
+                <p class="highlight">7.5 pH</p>
+                <p class="trend">Optimal for current crops</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-icon purple">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="card-content">
+                <h3>Yield Forecast</h3>
+                <p class="highlight">+12%</p>
+                <p class="trend up">Compared to last season</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Crop Schedule Section -->
+        <section id="crop-schedule" class="dashboard-section">
+          <div class="page-header">
+            <h1>Crop Schedule</h1>
+            <p>
+              Manage your planting and harvesting schedule for maximum
+              efficiency.
+            </p>
+          </div>
+
+          <div class="schedule-calendar">
+            <div class="section-header">
+              <h2>Upcoming Activities</h2>
+              <a href="#" class="btn-link"
+                >Add New <i class="fas fa-plus"></i
+              ></a>
+            </div>
+
+            <div class="schedule-items">
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <span class="day">15</span>
+                  <span class="month">Jun</span>
+                </div>
+                <div class="schedule-content">
+                  <h3>Wheat Harvesting</h3>
+                  <p>
+                    <i class="fas fa-map-marker-alt"></i> North Field (12 acres)
+                  </p>
+                  <div class="schedule-status">Upcoming</div>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <span class="day">22</span>
+                  <span class="month">Jun</span>
+                </div>
+                <div class="schedule-content">
+                  <h3>Rice Planting</h3>
+                  <p>
+                    <i class="fas fa-map-marker-alt"></i> East Field (8 acres)
+                  </p>
+                  <div class="schedule-status">Scheduled</div>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <span class="day">5</span>
+                  <span class="month">Jul</span>
+                </div>
+                <div class="schedule-content">
+                  <h3>Fertilizer Application</h3>
+                  <p><i class="fas fa-map-marker-alt"></i> All Fields</p>
+                  <div class="schedule-status">Planning</div>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <span class="day">12</span>
+                  <span class="month">Jul</span>
+                </div>
+                <div class="schedule-content">
+                  <h3>Pesticide Treatment</h3>
+                  <p>
+                    <i class="fas fa-map-marker-alt"></i> South Field (6 acres)
+                  </p>
+                  <div class="schedule-status">Planning</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 2rem">
+              <h2>Season Overview</h2>
+              <a href="#" class="btn-link"
+                >Calendar View <i class="fas fa-calendar-alt"></i
+              ></a>
+            </div>
+
+            <div class="season-overview">
+              <div class="season-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 40%"></div>
+                  <span class="progress-text">40% Complete</span>
+                </div>
+                <div class="season-timeline">
+                  <div class="timeline-mark active">
+                    <span class="mark-dot"></span>
+                    <span class="mark-label">Planting</span>
+                  </div>
+                  <div class="timeline-mark active">
+                    <span class="mark-dot"></span>
+                    <span class="mark-label">Growth</span>
+                  </div>
+                  <div class="timeline-mark current">
+                    <span class="mark-dot"></span>
+                    <span class="mark-label">Maintenance</span>
+                  </div>
+                  <div class="timeline-mark">
+                    <span class="mark-dot"></span>
+                    <span class="mark-label">Harvest</span>
+                  </div>
+                  <div class="timeline-mark">
+                    <span class="mark-dot"></span>
+                    <span class="mark-label">Post-Harvest</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Weather Section -->
+        <section id="weather" class="dashboard-section">
+          <div class="page-header">
+            <h1>Weather Forecast</h1>
+            <p>
+              Stay updated with local weather conditions for optimal farming
+              decisions.
+            </p>
+          </div>
+
+          <div class="weather-display">
+            <div class="section-header">
+              <h2>Current Weather</h2>
+              <a href="#" class="btn-link"
+                >View Details <i class="fas fa-chevron-right"></i
+              ></a>
+            </div>
+
+            <div class="current-weather">
+              <div class="weather-icon">
+                <i class="fas fa-sun"></i>
+              </div>
+              <div class="weather-details">
+                <div class="temperature">28°C</div>
+                <div class="weather-desc">Sunny</div>
+                <div class="location">Gujarat Region</div>
+              </div>
+              <div class="weather-stats">
+                <div class="weather-stat">
+                  <i class="fas fa-wind"></i>
+                  <span>10 km/h</span>
+                </div>
+                <div class="weather-stat">
+                  <i class="fas fa-tint"></i>
+                  <span>45%</span>
+                </div>
+                <div class="weather-stat">
+                  <i class="fas fa-umbrella"></i>
+                  <span>20%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="weather-forecast">
+              <h3>5-Day Forecast</h3>
+              <!-- Forecast items will be dynamically added by JavaScript -->
+            </div>
+
+            <div class="section-header">
+              <h2>Weather Alerts</h2>
+            </div>
+
+            <div class="alert-card">
+              <div class="alert-icon warning">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="alert-content">
+                <h3>Heavy Rain Expected</h3>
+                <p>
+                  Heavy rainfall predicted for the next week. Consider adjusting
+                  your irrigation schedule.
+                </p>
+                <span class="alert-time">Updated 2 hours ago</span>
+              </div>
+              <div class="alert-action">
+                <button class="alert-btn">
+                  <i class="fas fa-bell-slash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Loan Offers Section -->
+        <section id="loan-offers" class="dashboard-section">
+          <div class="page-header">
+            <h1>Loan Offers</h1>
+            <p>View personalized loan offers for your farming needs.</p>
+          </div>
+
+          <div class="loan-offers-list">
+            <div class="section-header">
+              <h2>Available Offers</h2>
+              <a href="#" class="btn-link"
+                >All Financial Products <i class="fas fa-chevron-right"></i
+              ></a>
+            </div>
+
+            <div class="loan-cards">
+              <div class="loan-card">
+                <div class="loan-card-header">
+                  <div class="loan-type">
+                    <i class="fas fa-tractor"></i> Equipment Loan
+                  </div>
+                  <div class="loan-badge">Recommended</div>
+                </div>
+                <div class="loan-amount">₹5,00,000</div>
+                <div class="loan-details">
+                  <div class="loan-detail">
+                    <span class="detail-label">Interest Rate</span>
+                    <span class="detail-value">7.5%</span>
+                  </div>
+                  <div class="loan-detail">
+                    <span class="detail-label">Term</span>
+                    <span class="detail-value">5 years</span>
+                  </div>
+                  <div class="loan-detail">
+                    <span class="detail-label">Monthly Payment</span>
+                    <span class="detail-value">₹10,025</span>
+                  </div>
+                </div>
+                <button class="loan-apply-btn">
+                  <i class="fas fa-check-circle"></i> Apply Now
+                </button>
+              </div>
+
+              <div class="loan-card">
+                <div class="loan-card-header">
+                  <div class="loan-type">
+                    <i class="fas fa-seedling"></i> Crop Loan
+                  </div>
+                </div>
+                <div class="loan-amount">₹2,50,000</div>
+                <div class="loan-details">
+                  <div class="loan-detail">
+                    <span class="detail-label">Interest Rate</span>
+                    <span class="detail-value">6.5%</span>
+                  </div>
+                  <div class="loan-detail">
+                    <span class="detail-label">Term</span>
+                    <span class="detail-value">1 year</span>
+                  </div>
+                  <div class="loan-detail">
+                    <span class="detail-label">Monthly Payment</span>
+                    <span class="detail-value">₹21,750</span>
+                  </div>
+                </div>
+                <button class="loan-apply-btn">
+                  <i class="fas fa-check-circle"></i> Apply Now
+                </button>
+              </div>
+
+              <div class="loan-card">
+                <div class="loan-card-header">
+                  <div class="loan-type">
+                    <i class="fas fa-mountain"></i> Land Development
+                  </div>
+                </div>
+                <div class="loan-amount">₹10,00,000</div>
+                <div class="loan-details">
+                  <div class="loan-detail">
+                    <span class="detail-label">Interest Rate</span>
+                    <span class="detail-value">8.0%</span>
+                  </div>
+                  <div class="loan-detail">
+                    <span class="detail-label">Term</span>
+                    <span class="detail-value">10 years</span>
+                  </div>
+                  <div class="loan-detail">
+                    <span class="detail-label">Monthly Payment</span>
+                    <span class="detail-value">₹12,132</span>
+                  </div>
+                </div>
+                <button class="loan-apply-btn">
+                  <i class="fas fa-check-circle"></i> Apply Now
+                </button>
+              </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 2rem">
+              <h2>Loan Eligibility</h2>
+              <a href="#" class="btn-link"
+                >Check Eligibility <i class="fas fa-calculator"></i
+              ></a>
+            </div>
+
+            <div class="loan-eligibility-card">
+              <div class="eligibility-header">
+                <h3><i class="fas fa-chart-line"></i> Your Loan Eligibility</h3>
+                <p>Based on your credit score and financial history</p>
+              </div>
+              <div class="eligibility-meter">
+                <div class="eligibility-bar">
+                  <div class="eligibility-fill" style="width: 75%"></div>
+                  <div class="eligibility-pointer" style="left: 75%">
+                    <span>₹12L</span>
+                  </div>
+                </div>
+                <div class="eligibility-scale">
+                  <span>₹0</span>
+                  <span>₹5L</span>
+                  <span>₹10L</span>
+                  <span>₹15L</span>
+                  <span>₹20L</span>
+                </div>
+              </div>
+              <div class="eligibility-info">
+                <p>
+                  You are eligible for loans up to
+                  <strong>₹12,00,000</strong> based on your current profile.
+                </p>
+                <p>Improve your eligibility by:</p>
+                <ul class="eligibility-tips">
+                  <li>
+                    <i class="fas fa-check-circle"></i> Maintaining regular loan
+                    repayments
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i> Improving your credit
+                    score
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i> Increasing your farm
+                    revenue
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="dashboard-section">
+          <div class="page-header">
+            <h1>Settings</h1>
+            <p>Manage your account preferences and settings.</p>
+          </div>
+
+          <div class="settings-wrapper">
+            <div class="settings-sidebar">
+              <ul class="settings-nav">
+                <li class="active"><a href="#profile-settings">Profile</a></li>
+                <li><a href="#security-settings">Security</a></li>
+                <li><a href="#notifications-settings">Notifications</a></li>
+                <li><a href="#farm-settings">Farm Details</a></li>
+                <li><a href="#app-settings">App Settings</a></li>
+              </ul>
+            </div>
+
+            <div class="settings-content">
+              <!-- Profile Settings Panel -->
+              <div id="profile-settings" class="settings-panel active">
+                <h2>Profile Settings</h2>
+                <form class="settings-form">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="display-name">Display Name</label>
+                      <input
+                        type="text"
+                        id="display-name"
+                        class="form-control"
+                        value="Jenish Shah"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email Address</label>
+                      <input
+                        type="email"
+                        id="email"
+                        class="form-control"
+                        value="jenish.shah@example.com"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      class="form-control"
+                      value="+91 9876543210"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" class="form-control" rows="3">
+123 Farm Road, Ahmedabad, Gujarat, India</textarea
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label for="farm-type">Farm Type</label>
+                    <select id="farm-type" class="form-control">
+                      <option value="wheat">Wheat Farm</option>
+                      <option value="rice">Rice Farm</option>
+                      <option value="mixed">Mixed Cultivation</option>
+                      <option value="organic">Organic Farm</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="farm-size">Farm Size (acres)</label>
+                    <input
+                      type="number"
+                      id="farm-size"
+                      class="form-control"
+                      value="28"
+                    />
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                      Save Changes
+                    </button>
+                    <button type="reset" class="btn-secondary">Cancel</button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Security Settings Panel -->
+              <div id="security-settings" class="settings-panel">
+                <h2>Security Settings</h2>
+                <form class="settings-form">
+                  <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input
+                      type="password"
+                      id="current-password"
+                      placeholder="Enter your current password"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="new-password">New Password</label>
+                      <input
+                        type="password"
+                        id="new-password"
+                        placeholder="Enter new password"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="confirm-password">Confirm Password</label>
+                      <input
+                        type="password"
+                        id="confirm-password"
+                        placeholder="Confirm new password"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                  <div class="password-strength">
+                    <div class="strength-meter">
+                      <div class="strength-fill" style="width: 70%"></div>
+                    </div>
+                    <span class="strength-text">Good password strength</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Two-Factor Authentication</label>
+                    <div class="toggle-container">
+                      <label class="toggle-switch">
+                        <input type="checkbox" checked />
+                        <span class="toggle-slider"></span>
+                      </label>
+                      <span class="toggle-label">Enabled</span>
+                    </div>
+                    <p class="form-help">
+                      We'll send a verification code to your phone or email when
+                      you sign in.
+                    </p>
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                      Update Security Settings
+                    </button>
+                    <button type="reset" class="btn-secondary">Cancel</button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Notifications Settings Panel -->
+              <div id="notifications-settings" class="settings-panel">
+                <h2>Notification Preferences</h2>
+                <form class="settings-form">
+                  <div class="notification-group">
+                    <h3>Email Notifications</h3>
+                    <div class="form-group toggle-group">
+                      <div class="toggle-label-container">
+                        <label>Loan Updates</label>
+                        <p class="form-help">
+                          Receive updates about your loan applications and
+                          approvals
+                        </p>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="toggle-switch">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                      <div class="toggle-label-container">
+                        <label>Weather Alerts</label>
+                        <p class="form-help">
+                          Receive weather updates and alerts for your farm
+                          location
+                        </p>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="toggle-switch">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                      <div class="toggle-label-container">
+                        <label>Crop Schedule Reminders</label>
+                        <p class="form-help">
+                          Receive reminders about upcoming crop activities
+                        </p>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="toggle-switch">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="notification-group">
+                    <h3>SMS Notifications</h3>
+                    <div class="form-group toggle-group">
+                      <div class="toggle-label-container">
+                        <label>Critical Alerts</label>
+                        <p class="form-help">
+                          Receive SMS for critical updates that require
+                          immediate attention
+                        </p>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="toggle-switch">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                      <div class="toggle-label-container">
+                        <label>Payment Reminders</label>
+                        <p class="form-help">
+                          Receive SMS reminders for upcoming loan payments
+                        </p>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="toggle-switch">
+                          <input type="checkbox" />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                      Save Preferences
+                    </button>
+                    <button type="reset" class="btn-secondary">
+                      Reset to Defaults
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Farm Details Panel -->
+              <div id="farm-settings" class="settings-panel">
+                <h2>Farm Details</h2>
+                <form class="settings-form">
+                  <div class="form-group">
+                    <label for="farm-name">Farm Name</label>
+                    <input
+                      type="text"
+                      id="farm-name"
+                      value="Green Acres Farm"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="farm-size">Total Land Area</label>
+                      <div class="input-group">
+                        <input
+                          type="number"
+                          id="farm-size"
+                          value="28"
+                          class="form-control"
+                        />
+                        <span class="input-group-text">acres</span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="farm-type">Farm Type</label>
+                      <select id="farm-type" class="form-control">
+                        <option selected>Mixed Farming</option>
+                        <option>Crop Farming</option>
+                        <option>Livestock Farming</option>
+                        <option>Dairy Farming</option>
+                        <option>Organic Farming</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Primary Crops</label>
+                    <div class="checkbox-group">
+                      <label class="checkbox-container">
+                        <input type="checkbox" checked />
+                        <span class="checkbox-label">Wheat</span>
+                      </label>
+                      <label class="checkbox-container">
+                        <input type="checkbox" checked />
+                        <span class="checkbox-label">Rice</span>
+                      </label>
+                      <label class="checkbox-container">
+                        <input type="checkbox" checked />
+                        <span class="checkbox-label">Cotton</span>
+                      </label>
+                      <label class="checkbox-container">
+                        <input type="checkbox" checked />
+                        <span class="checkbox-label">Sugarcane</span>
+                      </label>
+                      <label class="checkbox-container">
+                        <input type="checkbox" />
+                        <span class="checkbox-label">Potato</span>
+                      </label>
+                      <label class="checkbox-container">
+                        <input type="checkbox" />
+                        <span class="checkbox-label">Groundnut</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="farm-description">Farm Description</label>
+                    <textarea
+                      id="farm-description"
+                      class="form-control"
+                      rows="4"
+                    >
+Multi-crop farm with both traditional and modern farming practices. Implementing sustainable agricultural methods since 2018.</textarea
+                    >
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                      Update Farm Details
+                    </button>
+                    <button type="reset" class="btn-secondary">Cancel</button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- App Settings Panel -->
+              <div id="app-settings" class="settings-panel">
+                <h2>App Settings</h2>
+                <form class="settings-form">
+                  <div class="form-group toggle-group">
+                    <div class="toggle-label-container">
+                      <label>Dark Mode</label>
+                      <p class="form-help">
+                        Toggle between light and dark themes
+                      </p>
+                    </div>
+                    <div class="toggle-container">
+                      <label class="toggle-switch">
+                        <input type="checkbox" id="theme-toggle-settings" />
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="language">Language</label>
+                    <select id="language" class="form-control">
+                      <option selected>English</option>
+                      <option>हिन्दी (Hindi)</option>
+                      <option>ગુજરાતી (Gujarati)</option>
+                      <option>मराठी (Marathi)</option>
+                      <option>తెలుగు (Telugu)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="date-format">Date Format</label>
+                    <select id="date-format" class="form-control">
+                      <option selected>DD/MM/YYYY</option>
+                      <option>MM/DD/YYYY</option>
+                      <option>YYYY-MM-DD</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="units">Measurement Units</label>
+                    <select id="units" class="form-control">
+                      <option selected>Metric (km, kg, hectare)</option>
+                      <option>Imperial (miles, lb, acre)</option>
+                    </select>
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                      Save Settings
+                    </button>
+                    <button type="reset" class="btn-secondary">
+                      Reset to Defaults
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Toast Container -->
+        <div class="toast-container" id="toast-container"></div>
+      </main>
+    </div>
+    <script src="user_dashboard.js"></script>
+  </body>
+</html>

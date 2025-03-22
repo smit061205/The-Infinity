@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Background -->
+  <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#43a047" />
+    <stop offset="100%" stop-color="#2e7d32" />
+  </linearGradient>
+  <circle cx="60" cy="60" r="55" fill="url(#bgGradient)" />
+  <circle cx="60" cy="60" r="52" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.3" />
+  
+  <!-- Sun -->
+  <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffeb3b" />
+    <stop offset="100%" stop-color="#ffc107" />
+  </linearGradient>
+  <circle cx="40" cy="35" r="14" fill="url(#sunGradient)">
+    <animate attributeName="opacity" values="0.85;1;0.85" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Farmland -->
+  <linearGradient id="landGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#795548" />
+    <stop offset="50%" stop-color="#8d6e63" />
+    <stop offset="100%" stop-color="#795548" />
+  </linearGradient>
+  <path d="M15,75 Q60,60 105,75 L105,105 L15,105 Z" fill="url(#landGradient)" />
+  
+  <!-- Field Lines -->
+  <path d="M30,77 Q60,65 90,77" fill="none" stroke="#8d6e63" stroke-width="1.5" />
+  <path d="M25,82 Q60,72 95,82" fill="none" stroke="#8d6e63" stroke-width="1.5" />
+  <path d="M20,88 Q60,78 100,88" fill="none" stroke="#8d6e63" stroke-width="1.5" />
+  <path d="M15,94 Q60,84 105,94" fill="none" stroke="#8d6e63" stroke-width="1.5" />
+  
+  <!-- Plants/Crops -->
+  <g>
+    <path d="M40,74 Q35,60 40,45 Q50,60 40,74" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1" />
+    <path d="M60,70 Q55,50 60,30 Q70,50 60,70" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1" />
+    <path d="M80,74 Q75,60 80,45 Q90,60 80,74" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1" />
+  </g>
+  
+  <!-- Barn/House -->
+  <linearGradient id="barnGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#e53935" />
+    <stop offset="100%" stop-color="#c62828" />
+  </linearGradient>
+  <path d="M82,55 L95,55 L95,75 L82,75 Z" fill="url(#barnGradient)" />
+  <path d="M78,55 L99,55 L88.5,42 Z" fill="#c62828" />
+  
+  <!-- Window -->
+  <rect x="86" y="62" width="5" height="5" fill="#ffecb3" />
+  
+  <!-- Text "Farm Finances" -->
+  <text x="60" y="120" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="12" fill="#ffffff">FarmFinances</text>
+</svg> 
