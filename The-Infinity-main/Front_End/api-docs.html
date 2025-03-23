@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>API Documentation - FarmFinances</title>
+    <link rel="stylesheet" href="landing_page.css" />
+    <link rel="stylesheet" href="pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* API Documentation specific styles */
+      .api-section {
+        background-color: var(--bg-light);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .endpoint {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .endpoint:last-child {
+        border-bottom: none;
+      }
+
+      .endpoint-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .method {
+        padding: 0.3rem 0.8rem;
+        border-radius: 4px;
+        font-weight: 600;
+        margin-right: 1rem;
+        min-width: 60px;
+        text-align: center;
+      }
+
+      .get {
+        background-color: #e7f5ff;
+        color: #0366d6;
+      }
+
+      .post {
+        background-color: #e6ffed;
+        color: #28a745;
+      }
+
+      .put {
+        background-color: #fff3e0;
+        color: #f29d38;
+      }
+
+      .delete {
+        background-color: #ffebee;
+        color: #d73a49;
+      }
+
+      .url-path {
+        font-family: monospace;
+        font-size: 1rem;
+        background-color: var(--bg-alternate);
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        word-break: break-all;
+      }
+
+      .endpoint-description {
+        margin-bottom: 1rem;
+      }
+
+      .code-block {
+        background-color: var(--code-bg);
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        overflow-x: auto;
+        font-family: monospace;
+      }
+
+      .tab-container {
+        margin: 1rem 0;
+      }
+
+      .tabs {
+        display: flex;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 1rem;
+      }
+
+      .tab {
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+      }
+
+      .tab.active {
+        border-bottom: 2px solid var(--primary-color);
+        font-weight: 500;
+      }
+
+      .parameter-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+
+      .parameter-table th,
+      .parameter-table td {
+        padding: 0.8rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .parameter-table th {
+        font-weight: 600;
+        background-color: var(--bg-alternate);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .get {
+          background-color: rgba(3, 102, 214, 0.2);
+        }
+
+        .post {
+          background-color: rgba(40, 167, 69, 0.2);
+        }
+
+        .put {
+          background-color: rgba(242, 157, 56, 0.2);
+        }
+
+        .delete {
+          background-color: rgba(215, 58, 73, 0.2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="assets/farm-logo.png" alt="FarmFinances Logo" width="80" />
+        <div class="company-name">
+          <h2>
+            <span class="logo-farm">Farm</span
+            ><span class="logo-finances">Finances</span>
+          </h2>
+        </div>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li>
+            <a href="farmer-resources.html" class="nav-link">Resources</a>
+          </li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="theme-switch-wrapper">
+        <i class="fas fa-sun theme-icon"></i>
+        <label class="theme-switch">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider"></span>
+        </label>
+        <i class="fas fa-moon theme-icon"></i>
+      </div>
+      <div class="auth-buttons">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="login.html?register=true" class="btn btn-solid">Register</a>
+      </div>
+      <div class="mobile-menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="page-header">
+        <h1>API Documentation</h1>
+        <p>
+          Integrate with the FarmFinances platform to access agricultural credit
+          evaluation data
+        </p>
+      </div>
+
+      <section class="content-section">
+        <h2>Getting Started</h2>
+        <p>
+          The FarmFinances API allows developers to access our agricultural
+          credit evaluation system. This documentation will guide you through
+          the process of integrating with our platform.
+        </p>
+
+        <h3>Authentication</h3>
+        <p>
+          All API requests require authentication using an API key. You can
+          obtain an API key by registering for a developer account in our
+          <a href="login.html?register=true">portal</a>.
+        </p>
+
+        <div class="code-block">
+          <pre>Authorization: Bearer YOUR_API_KEY</pre>
+        </div>
+
+        <h3>Base URL</h3>
+        <p>All endpoints are relative to the following base URL:</p>
+        <div class="code-block">
+          <pre>https://api.farmfinances.com/v1</pre>
+        </div>
+      </section>
+
+      <section class="content-section api-section">
+        <h2>Endpoints</h2>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="url-path">/farmers/{farmer_id}</span>
+          </div>
+          <div class="endpoint-description">
+            <p>
+              Retrieve detailed information about a farmer, including their
+              credit evaluation.
+            </p>
+          </div>
+
+          <h4>Parameters</h4>
+          <table class="parameter-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>farmer_id</td>
+                <td>string</td>
+                <td>Yes</td>
+                <td>Unique identifier for the farmer</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="tab-container">
+            <div class="tabs">
+              <div class="tab active">Response</div>
+            </div>
+            <div class="code-block">
+              <pre>
+{
+  "farmer_id": "f12345",
+  "name": "Vijay Shah",
+  "location": {
+    "district": "Gandhinagar",
+    "state": "Gujarat",
+    "coordinates": {
+      "latitude": 23.2156,
+      "longitude": 72.6369
+    }
+  },
+  "credit_score": {
+    "traditional_score": 680,
+    "farmfinances_score": 742,
+    "components": {
+      "financial_history": 75,
+      "land_productivity": 85,
+      "agricultural_practices": 88,
+      "climate_resilience": 70
+    }
+  },
+  "farm_data": {
+    "total_area": 12.5,
+    "soil_health_index": 78,
+    "crops": [
+      {
+        "name": "Wheat",
+        "area": 8.2,
+        "yield_history": [...]
+      },
+      {
+        "name": "Cotton",
+        "area": 4.3,
+        "yield_history": [...]
+      }
+    ]
+  }
+}</pre
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="url-path">/credit-evaluations/{evaluation_id}</span>
+          </div>
+          <div class="endpoint-description">
+            <p>Retrieve a specific credit evaluation by its ID.</p>
+          </div>
+
+          <h4>Parameters</h4>
+          <table class="parameter-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>evaluation_id</td>
+                <td>string</td>
+                <td>Yes</td>
+                <td>Unique identifier for the credit evaluation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="url-path">/loan-requests</span>
+          </div>
+          <div class="endpoint-description">
+            <p>Create a new loan request for a farmer.</p>
+          </div>
+
+          <h4>Request Body</h4>
+          <div class="code-block">
+            <pre>
+{
+  "farmer_id": "f12345",
+  "amount": 250000,
+  "purpose": "Equipment Purchase",
+  "term_months": 36,
+  "lender_id": "l789"
+}</pre
+            >
+          </div>
+        </div>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="url-path">/soil-data/{farm_id}</span>
+          </div>
+          <div class="endpoint-description">
+            <p>Retrieve soil health data for a specific farm.</p>
+          </div>
+        </div>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="url-path">/weather-data/{location_id}</span>
+          </div>
+          <div class="endpoint-description">
+            <p>
+              Retrieve weather forecast and historical data for a specific
+              location.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Webhook Integration</h2>
+        <p>
+          You can set up webhooks to receive real-time updates when a farmer's
+          credit evaluation changes or when new agricultural data is available.
+        </p>
+
+        <h3>Setting Up Webhooks</h3>
+        <p>
+          Register a webhook URL in your developer dashboard. We will send POST
+          requests to this URL whenever relevant events occur.
+        </p>
+
+        <div class="code-block">
+          <pre>
+{
+  "event": "credit_evaluation.updated",
+  "farmer_id": "f12345",
+  "previous_score": 720,
+  "new_score": 742,
+  "timestamp": "2025-03-15T14:32:21Z"
+}</pre
+          >
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>SDK & Libraries</h2>
+        <p>
+          We provide official client libraries for popular programming languages
+          to make integration easier.
+        </p>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fab fa-node-js"></i>
+            </div>
+            <h3>Node.js</h3>
+            <p>
+              <a href="#">farmfinances-node</a> - Official Node.js client
+              library for the FarmFinances API.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fab fa-python"></i>
+            </div>
+            <h3>Python</h3>
+            <p>
+              <a href="#">farmfinances-python</a> - Official Python client
+              library for the FarmFinances API.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fab fa-java"></i>
+            </div>
+            <h3>Java</h3>
+            <p>
+              <a href="#">farmfinances-java</a> - Official Java client library
+              for the FarmFinances API.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fab fa-php"></i>
+            </div>
+            <h3>PHP</h3>
+            <p>
+              <a href="#">farmfinances-php</a> - Official PHP client library for
+              the FarmFinances API.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section cta-section">
+        <h2>Need Help?</h2>
+        <p>
+          Our developer support team is ready to assist you with your
+          integration.
+        </p>
+        <a href="mailto:api-support@farmfinances.com" class="btn btn-primary"
+          >Contact Developer Support</a
+        >
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>FarmFinances</h2>
+          <p>Smart credit evaluation for modern farmers</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h3>Navigation</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="farmer-resources.html">Resources</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="farmer-resources.html">Farmer Resources</a></li>
+              <li><a href="lender-info.html">Lender Information</a></li>
+              <li><a href="api-docs.html">API Documentation</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms-of-service.html">Terms of Service</a></li>
+              <li><a href="data-protection.html">Data Protection</a></li>
+              <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Stay Updated</h3>
+          <p>Subscribe to our newsletter for the latest news and updates.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 FarmFinances. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="landing_page.js"></script>
+  </body>
+</html>

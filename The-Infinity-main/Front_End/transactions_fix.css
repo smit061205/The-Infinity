@@ -1,0 +1,165 @@
+/* Fix for transactions list to remove blank space */
+.transactions-list {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 0;
+  margin-bottom: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  max-height: none;
+}
+
+.transactions-list:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.transaction-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: var(--primary-color);
+  transition: width 0.2s ease;
+}
+
+.transaction-item:hover::before {
+  width: 4px;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.transaction-item:hover .transaction-icon {
+  transform: scale(1.1);
+}
+
+.transaction-icon.income {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: var(--success-color);
+}
+
+.transaction-icon.expense {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: var(--danger-color);
+}
+
+.transaction-info {
+  flex: 1;
+}
+
+.transaction-name {
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.transaction-item:hover .transaction-name {
+  color: var(--primary-color);
+}
+
+.transaction-date {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.transaction-amount {
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.transaction-amount.income {
+  color: var(--success-color);
+}
+
+.transaction-amount.expense {
+  color: var(--danger-color);
+}
+
+.transaction-item:hover .transaction-amount {
+  transform: scale(1.05);
+}
+
+/* Full transactions page */
+.full-transactions {
+  max-height: none;
+  overflow: visible;
+}
+
+.transaction-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.transaction-filter,
+.month-filter {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+.transactions-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.pagination-btn {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not([disabled]) {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.pagination-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}

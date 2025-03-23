@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Transactions - FarmFinances</title>
+    <link rel="stylesheet" href="user_dashboard.css" />
+    <link rel="stylesheet" href="components.css" />
+    <link rel="stylesheet" href="transactions_fix.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <!-- Authentication Check Script -->
+    <script>
+      // Check if user is logged in
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        // Redirect to login page
+        window.location.href = "login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Mobile Sidebar Toggle -->
+    <button id="sidebar-toggle" class="mobile-only">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <img src="logo.png" alt="FarmFinances Logo" width="40" />
+            <span>FarmFinances</span>
+          </div>
+          <button class="mobile-toggle" id="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+
+        <div class="sidebar-user">
+          <div class="user-avatar">
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="User Avatar"
+            />
+            <span class="user-status"></span>
+          </div>
+          <div class="user-info">
+            <h4 class="user-name">Rajesh Kumar</h4>
+            <p class="user-farm">Green Valley Farms</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="user_dashboard.html" class="sidebar-link">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="transactions.html" class="sidebar-link active">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Transactions</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="sidebar-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="sidebar-link">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Loans</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="sidebar-link">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Crop Plans</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="sidebar-link">
+                <i class="fas fa-leaf"></i>
+                <span>Farm Data</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="sidebar-link">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+          <a href="#" id="logout" class="sidebar-link">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+          <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search..." class="search-input" />
+          </div>
+
+          <div class="topbar-actions">
+            <button class="notification-bell">
+              <i class="fas fa-bell"></i>
+              <span class="notification-badge">3</span>
+            </button>
+            <button class="help-btn">
+              <i class="fas fa-question-circle"></i>
+            </button>
+            <button class="theme-toggle">
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Transactions Section -->
+        <section id="transactions" class="dashboard-section">
+          <div class="page-header">
+            <h1>All Transactions</h1>
+            <p>Review and track all your financial transactions.</p>
+          </div>
+
+          <!-- Filters -->
+          <div class="dashboard-section">
+            <div class="section-header">
+              <h2>Filters</h2>
+            </div>
+            <div class="transaction-filters">
+              <select class="transaction-filter" id="type-filter">
+                <option value="all">All Types</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+              <select class="transaction-filter" id="category-filter">
+                <option value="all">All Categories</option>
+                <option value="farm-supplies">Farm Supplies</option>
+                <option value="crop-sale">Crop Sale</option>
+                <option value="equipment">Equipment</option>
+                <option value="irrigation">Irrigation</option>
+                <option value="wages">Labor & Wages</option>
+                <option value="loans">Loans</option>
+                <option value="other">Other</option>
+              </select>
+              <select class="month-filter" id="month-filter">
+                <option value="all">All Time</option>
+                <option value="current">This Month</option>
+                <option value="last">Last Month</option>
+                <option value="custom">Custom Range</option>
+              </select>
+              <button class="btn btn-primary" id="apply-filters">
+                Apply Filters
+              </button>
+            </div>
+          </div>
+
+          <!-- Full Transactions List -->
+          <div class="dashboard-section">
+            <div class="section-header">
+              <h2>Transaction History</h2>
+              <button class="btn-link">
+                <i class="fas fa-download"></i> Export
+              </button>
+            </div>
+            <div class="transactions-list full-transactions">
+              <div class="transaction-item">
+                <div class="transaction-icon expense">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Farm Supplies</div>
+                  <div class="transaction-date">Today, 2:35 PM</div>
+                </div>
+                <div class="transaction-amount expense">-₹12,565</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon income">
+                  <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Crop Sale</div>
+                  <div class="transaction-date">Yesterday, 9:20 AM</div>
+                </div>
+                <div class="transaction-amount income">+₹27,500</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon expense">
+                  <i class="fas fa-tractor"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Equipment Repair</div>
+                  <div class="transaction-date">Yesterday, 7:45 PM</div>
+                </div>
+                <div class="transaction-amount expense">-₹8,450</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon expense">
+                  <i class="fas fa-hand-holding-water"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">
+                    Irrigation System Maintenance
+                  </div>
+                  <div class="transaction-date">July 12, 2023</div>
+                </div>
+                <div class="transaction-amount expense">-₹5,200</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon income">
+                  <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Government Subsidy</div>
+                  <div class="transaction-date">July 10, 2023</div>
+                </div>
+                <div class="transaction-amount income">+₹15,000</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon expense">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Labor Wages</div>
+                  <div class="transaction-date">July 5, 2023</div>
+                </div>
+                <div class="transaction-amount expense">-₹18,750</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon income">
+                  <i class="fas fa-seedling"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Vegetable Sale</div>
+                  <div class="transaction-date">July 3, 2023</div>
+                </div>
+                <div class="transaction-amount income">+₹8,320</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon expense">
+                  <i class="fas fa-gas-pump"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Fuel for Tractor</div>
+                  <div class="transaction-date">July 1, 2023</div>
+                </div>
+                <div class="transaction-amount expense">-₹4,560</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon expense">
+                  <i class="fas fa-pills"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Pesticides</div>
+                  <div class="transaction-date">June 28, 2023</div>
+                </div>
+                <div class="transaction-amount expense">-₹7,840</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-icon income">
+                  <i class="fas fa-warehouse"></i>
+                </div>
+                <div class="transaction-info">
+                  <div class="transaction-name">Storage Space Rental</div>
+                  <div class="transaction-date">June 25, 2023</div>
+                </div>
+                <div class="transaction-amount income">+₹3,500</div>
+              </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="transactions-pagination">
+              <button class="pagination-btn" disabled>
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <span class="pagination-info">Page 1 of 3</span>
+              <button class="pagination-btn">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Theme Toggle Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.querySelector(".theme-toggle");
+        const body = document.body;
+
+        // Load saved theme preference
+        if (localStorage.getItem("darkTheme") === "true") {
+          body.classList.add("dark-theme");
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Toggle theme
+        themeToggle.addEventListener("click", function () {
+          body.classList.toggle("dark-theme");
+
+          if (body.classList.contains("dark-theme")) {
+            localStorage.setItem("darkTheme", "true");
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          } else {
+            localStorage.setItem("darkTheme", "false");
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          }
+        });
+
+        // Mobile sidebar toggle
+        const sidebarToggle = document.getElementById("sidebar-toggle");
+        const sidebar = document.querySelector(".sidebar");
+
+        sidebarToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("sidebar-open");
+        });
+
+        // Logout functionality
+        document
+          .getElementById("logout")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "login.html";
+          });
+
+        // Filter functionality
+        document
+          .getElementById("apply-filters")
+          .addEventListener("click", function () {
+            // Future implementation: actual filter functionality
+            alert(
+              "Filters applied! This would filter the transactions in a real implementation."
+            );
+          });
+      });
+    </script>
+  </body>
+</html>
